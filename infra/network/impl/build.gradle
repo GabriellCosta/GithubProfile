@@ -13,8 +13,6 @@ dependencies {
     implementation dependencies.Dependencies.okhttp
     implementation dependencies.Dependencies.okhttpLogger
 
-    implementation dependencies.Dependencies.Koin.core
-
     implementation dependencies.Dependencies.Apollo.runtime
     dependencies.Dependencies.Dagger.addLibs(project)
 }
