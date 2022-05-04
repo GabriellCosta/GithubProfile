@@ -1,0 +1,1 @@
+[![CircleCI](https://circleci.com/gh/GabriellCosta/github-repo-view/tree/master.svg?style=svg)](https://circleci.com/gh/GabriellCosta/github-repo-view/tree/master)

@@ -1,0 +1,16 @@
+plugins {
+    id "kotlin"
+}
+
+dependencies {
+    implementation dependencies.Dependencies.kotlinStdlib
+
+    implementation(projects.infra.network.public)
+    implementation dependencies.Dependencies.retrofit
+    implementation(dependencies.Dependencies.Moshi.retrofit)
+    implementation(dependencies.Dependencies.Moshi.core)
+    implementation dependencies.Dependencies.okhttp
+    implementation dependencies.Dependencies.okhttpLogger
+
+    implementation dependencies.Dependencies.Koin.core
+}

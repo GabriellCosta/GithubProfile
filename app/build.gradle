@@ -1,0 +1,46 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion AndroidConfig.compileSdk
+    defaultConfig {
+        applicationId AndroidConfig.applicationId
+        minSdkVersion AndroidConfig.minSdk
+        targetSdkVersion AndroidConfig.targetSdk
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "API_URL", "\"https://api.github.com/\""
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file("$rootDir/debug.keystore")
+            storePassword "123456"
+            keyAlias "key0"
+            keyPassword "123456"
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+            applicationIdSuffix ".debug"
+            versionNameSuffix "- Debug"
+        }
+        release {
+            signingConfig signingConfigs.debug
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation(projects.feature.repo)
+    implementation(projects.infra.network.impl)
+    implementation(projects.infra.network.public)
+
+    implementation(dependencies.Dependencies.okhttpLogger)
+}

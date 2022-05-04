@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="repositories_error_generic">Encontramos um erro ao carregar os repositorios</string>
+    <string name="repositories_error_max_requests">Você atingiu o maximo de vezes que pode usar o app dentro de uma hora, tente novamente daqui uma hora</string>
+
+    <string name="repositories_try_again">Tentar novamente</string>
+
+    <string name="repositories_state_empty_title">Parece que não temos nenhum repositorio</string>
+    <string name="repositories_state_empty_button_positive">@string/repositories_try_again</string>
+
+    <string name="repositories_state_generic_title">Encontramos um erro ao tentar carregar sua pagina  : (</string>
+    <string name="repositories_state_generic_button_positive">@string/repositories_try_again</string>
+</resources>
