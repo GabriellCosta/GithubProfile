@@ -7,7 +7,7 @@ import dagger.android.AndroidInjectionModule
 import de.tigrao.github.domain.profile.di.ProfileModule
 import dev.tigrao.github.infra.network.NetworkBuilder
 import dev.tigrao.github.infra.network.di.NetworkModule
-import me.tigrao.github.repo.di.RepoActivityModule
+import me.tigrao.github.main.di.MainActivityModule
 import javax.inject.Singleton
 
 @Module(
@@ -25,7 +25,7 @@ internal object AppModule {
     modules = [
         AppModule::class,
         AndroidInjectionModule::class,
-        RepoActivityModule::class,
+        MainActivityModule::class,
         NetworkModule::class,
         ProfileModule::class,
     ],

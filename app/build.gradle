@@ -39,7 +39,7 @@ android {
 }
 
 dependencies {
-    implementation(projects.feature.repo)
+    implementation(projects.feature.main)
     implementation(projects.infra.network.impl)
     implementation(projects.infra.network.public)
     implementation(projects.domain.profile)
