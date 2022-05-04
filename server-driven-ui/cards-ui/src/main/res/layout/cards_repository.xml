@@ -29,7 +29,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="?attr/spacingXXS"
             android:textAppearance="?attr/textAppearanceSubtitle1"
-            android:textColor="?attr/colorAccent"
             app:layout_constraintBottom_toBottomOf="@+id/card_image"
             app:layout_constraintStart_toEndOf="@+id/card_image"
             app:layout_constraintTop_toTopOf="@+id/card_image"
@@ -44,7 +43,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?attr/textAppearanceSubtitle2"
-            android:textColor="?attr/colorAccent"
             app:layout_constraintStart_toStartOf="@+id/card_image"
             app:layout_constraintTop_toBottomOf="@+id/card_image"
             tools:text="telegraph-android" />
@@ -56,7 +54,6 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:textAppearance="?attr/textAppearanceSubtitle1"
-            android:textColor="?attr/colorAccent"
             app:layout_constraintStart_toStartOf="@+id/card_image"
             app:layout_constraintTop_toBottomOf="@+id/txt_title"
             tools:text="Telegraph X is Android client" />
