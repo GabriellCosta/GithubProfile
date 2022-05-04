@@ -53,6 +53,21 @@ object Dependencies {
 
     val paging = "androidx.paging:paging-runtime-ktx:${Versions.paging}"
 
+    object Dagger {
+        private const val VERSION = "2.41"
+
+        val android = "com.google.dagger:dagger-android-support:$VERSION"
+        private val implementation = "com.google.dagger:dagger:$VERSION"
+        private val processor = "com.google.dagger:dagger-compiler:$VERSION"
+
+        val addLibs = closureOf<Project> {
+            with(project.dependencies) {
+                add("implementation", implementation)
+                add("kapt", processor)
+            }
+        }
+    }
+
     object Apollo {
         private const val VERSION = "3.2.1"
 

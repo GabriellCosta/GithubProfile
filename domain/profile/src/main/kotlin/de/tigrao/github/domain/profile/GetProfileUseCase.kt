@@ -8,12 +8,13 @@ import de.tigrao.github.domain.profile.model.UserProfileModel
 import deb.tigrao.github.infra.api.ResultDomain
 import deb.tigrao.github.infra.api.callApi
 import dev.tigrao.github.UserProfileQuery
+import javax.inject.Inject
 
 interface GetProfileUseCase {
     suspend operator fun invoke(userName: String): ResultDomain<UserProfileModel, UserProfileErrorModel>
 }
 
-internal class GetProfileDefaultUseCase(
+internal class GetProfileDefaultUseCase @Inject constructor(
     private val apolloClient: ApolloClient
 ) : GetProfileUseCase {
     override suspend fun invoke(userName: String): ResultDomain<UserProfileModel, UserProfileErrorModel> {

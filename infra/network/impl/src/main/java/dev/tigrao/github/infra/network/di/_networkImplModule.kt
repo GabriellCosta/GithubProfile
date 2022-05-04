@@ -13,16 +13,7 @@ val networkImplModule = module {
     }
 
     single {
-        NetworkService(
-            networkBuilder = get(),
-            okhttpClientFactory = get(),
-            moshi = get(),
-            callAdapterFactoryList = getAll(),
-        ).createRetrofitInstance()
-    }
-
-    single {
         val interceptor = getAll<Interceptor>()
-        OkhttpClientFactory(interceptor)
+        OkhttpClientFactory()
     }
 }

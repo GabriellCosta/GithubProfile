@@ -17,6 +17,7 @@ dependencies {
     implementation(projects.infra.actionDispatcher)
     implementation(projects.infra.apiCaller)
     implementation(projects.domain.profile)
+    implementation(projects.infra.baseDi)
 
     implementation dependencies.Dependencies.constraintLayout
     implementation dependencies.Dependencies.recyclerView
@@ -26,6 +27,8 @@ dependencies {
     dependencies.Dependencies.Moshi.addLibs(project)
     implementation dependencies.Dependencies.imageFetcher
     implementation dependencies.Dependencies.retrofit
+    dependencies.Dependencies.Dagger.addLibs(project)
+    implementation dependencies.Dependencies.Dagger.android
 
     implementation dependencies.Dependencies.paging
     implementation dependencies.Dependencies.Kirich.viewBindingProperty
