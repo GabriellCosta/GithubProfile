@@ -1,0 +1,29 @@
+plugins {
+    id "com.android.library"
+    id "kotlin-android"
+    id "kotlin-kapt"
+}
+
+android {
+
+    buildFeatures {
+        viewBinding = true
+    }
+}
+
+dependencies {
+    implementation(projects.styleguide)
+
+    implementation dependencies.Dependencies.constraintLayout
+    implementation dependencies.Dependencies.recyclerView
+    implementation dependencies.Dependencies.materialDesign
+    implementation dependencies.Dependencies.appCompat
+    implementation dependencies.Dependencies.coreKTX
+
+    implementation dependencies.Dependencies.imageFetcher
+
+    implementation dependencies.Dependencies.Kirich.viewBindingProperty
+
+    testImplementation(dependencies.TestDependencies.jUnit)
+    testImplementation(dependencies.TestDependencies.mockk)
+}
