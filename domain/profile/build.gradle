@@ -1,0 +1,16 @@
+plugins {
+    id "kotlin"
+    id("com.apollographql.apollo3").version("3.2.1")
+}
+
+apollo {
+    packageName.set("dev.tigrao.github")
+}
+
+dependencies {
+    implementation dependencies.Dependencies.kotlinStdlib
+
+    implementation dependencies.Dependencies.Apollo.runtime
+
+    implementation projects.infra.apiCaller
+}

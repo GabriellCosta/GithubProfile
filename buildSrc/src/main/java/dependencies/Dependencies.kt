@@ -53,6 +53,12 @@ object Dependencies {
 
     val paging = "androidx.paging:paging-runtime-ktx:${Versions.paging}"
 
+    object Apollo {
+        private const val VERSION = "3.2.1"
+
+        const val runtime = "com.apollographql.apollo3:apollo-runtime:$VERSION"
+    }
+
     object Moshi {
         object Versions {
             const val moshi = "1.12.0"

@@ -1,5 +1,7 @@
 package dev.tigrao.github.infra.network
 
+import com.apollographql.apollo3.ApolloClient
+import com.apollographql.apollo3.network.okHttpClient
 import com.squareup.moshi.Moshi
 import retrofit2.CallAdapter
 import retrofit2.Retrofit
@@ -11,6 +13,11 @@ internal class NetworkService(
     private val moshi: Moshi,
     private val callAdapterFactoryList: List<CallAdapter.Factory>,
 ) {
+
+    fun createApolloService() = ApolloClient.Builder()
+        .serverUrl(networkBuilder.baseUrl)
+        .okHttpClient(okhttpClientFactory.createNewInstance())
+        .build()
 
     fun createRetrofitInstance(): Retrofit =
         Retrofit.Builder()

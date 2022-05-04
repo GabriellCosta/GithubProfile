@@ -13,4 +13,6 @@ dependencies {
     implementation dependencies.Dependencies.okhttpLogger
 
     implementation dependencies.Dependencies.Koin.core
+
+    implementation dependencies.Dependencies.Apollo.runtime
 }

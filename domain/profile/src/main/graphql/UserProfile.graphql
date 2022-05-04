@@ -1,0 +1,54 @@
+query UserProfile {
+  user(login: "GabriellCosta") @nonnull {
+    avatarUrl
+    bio
+    followers {
+      totalCount
+    }
+    following {
+      totalCount
+    }
+    name @nonnull
+    pinnedItems(first: 3) @nonnull {
+      edges @nonnull {
+        node {
+          ... on Repository {
+            id
+            name
+            owner {
+              avatarUrl
+            }
+            forks {
+              totalCount
+            }
+            description
+            languages(first: 1) {
+              edges {
+                node {
+                  color
+                  name
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    repositories(first: 10, orderBy: {field: STARGAZERS, direction: ASC}) {
+      nodes {
+        name
+        description
+        forkCount
+        languages(first: 1) {
+          nodes {
+            name
+            color
+          }
+        }
+        owner {
+          avatarUrl
+        }
+      }
+    }
+  }
+}
