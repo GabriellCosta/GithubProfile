@@ -42,7 +42,6 @@ dependencies {
     implementation(projects.feature.repo)
     implementation(projects.infra.network.impl)
     implementation(projects.infra.network.public)
-    implementation(projects.infra.baseDi)
     implementation(projects.domain.profile)
 
     implementation(dependencies.Dependencies.okhttpLogger)

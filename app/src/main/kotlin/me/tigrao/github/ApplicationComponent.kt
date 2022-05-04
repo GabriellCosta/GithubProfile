@@ -1,14 +1,11 @@
 package me.tigrao.github
 
-import android.app.Application
-import dagger.BindsInstance
 import dagger.Component
 import dagger.Module
 import dagger.Provides
 import dagger.android.AndroidInjectionModule
 import de.tigrao.github.domain.profile.di.ProfileModule
 import dev.tigrao.github.infra.network.NetworkBuilder
-import dev.tigrao.github.infra.network.di.NetworkComponent
 import dev.tigrao.github.infra.network.di.NetworkModule
 import me.tigrao.github.repo.di.RepoActivityModule
 import javax.inject.Singleton

@@ -17,7 +17,6 @@ dependencies {
     implementation(projects.infra.actionDispatcher)
     implementation(projects.infra.apiCaller)
     implementation(projects.domain.profile)
-    implementation(projects.infra.baseDi)
 
     implementation dependencies.Dependencies.constraintLayout
     implementation dependencies.Dependencies.recyclerView
