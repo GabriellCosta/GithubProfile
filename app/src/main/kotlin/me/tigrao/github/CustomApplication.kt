@@ -18,7 +18,7 @@ class CustomApplication : Application(), HasAndroidInjector {
 
     override fun onCreate() {
         super.onCreate()
-        DaggerApplicationComponent.create().inject(this)
+        AppInjector.init(this)
 
         startKoin {
             // Android context

@@ -20,8 +20,6 @@ class RepoActivity : AppCompatActivity() {
     internal lateinit var useCase: GetProfileUseCase
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        AndroidInjection.inject(this)
-
         super.onCreate(savedInstanceState)
 
         lifecycleScope.launch {
