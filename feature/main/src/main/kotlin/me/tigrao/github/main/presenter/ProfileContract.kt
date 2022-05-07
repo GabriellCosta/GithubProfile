@@ -17,5 +17,7 @@ interface ProfileContract {
         fun detach()
 
         suspend fun fetchProfileData()
+
+        suspend fun forceRefresh()
     }
 }

@@ -9,6 +9,7 @@ import dev.tigrao.github.infra.network.NetworkBuilder
 import dev.tigrao.github.infra.network.di.NetworkModule
 import dev.tigrao.github.sdu.card.ui.di.CardUiModule
 import me.tigrao.github.main.di.MainActivityModule
+import me.tigrao.github.main.di.ProfileFeatureModule
 import javax.inject.Singleton
 
 @Module(
@@ -30,6 +31,7 @@ internal object AppModule {
         NetworkModule::class,
         ProfileModule::class,
         CardUiModule::class,
+        ProfileFeatureModule::class,
     ],
 
     )

@@ -46,6 +46,7 @@ object Dependencies {
     val viewModel = "androidx.lifecycle:lifecycle-viewmodel:${Versions.livedata}"
     val extensions = "androidx.lifecycle:lifecycle-extensions:${Versions.livedata}"
     val lifecycle = "androidx.lifecycle:lifecycle-livedata:${Versions.livedata}"
+    val lifecycleRuntime = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.livedata}"
 
     val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
 

@@ -11,19 +11,14 @@ internal class CardProcessorImpl @Inject constructor(
     private val cardToItemMapper: CardToItemMapper
 ) : CardProcessor {
 
-    private val adapter = GroupieAdapter()
-
     override fun process(cards: List<CardModel>, recyclerView: RecyclerView) {
+        val adapter = GroupieAdapter()
 
         val listOfItems = cardToItemMapper.mapFrom(cards, this)
 
-        val section = Section().apply {
-            listOfItems.forEach {
-                add(it)
-            }
+        listOfItems.asSequence().forEach {
+            adapter.add(it)
         }
-
-        adapter.add(section)
 
         recyclerView.adapter = adapter
     }

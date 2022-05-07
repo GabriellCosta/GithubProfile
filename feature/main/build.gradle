@@ -31,6 +31,7 @@ dependencies {
     implementation dependencies.Dependencies.retrofit
     dependencies.Dependencies.Dagger.addLibs(project)
     implementation dependencies.Dependencies.Dagger.android
+    implementation dependencies.Dependencies.lifecycleRuntime
 
     implementation dependencies.Dependencies.Kirich.viewBindingProperty
 
