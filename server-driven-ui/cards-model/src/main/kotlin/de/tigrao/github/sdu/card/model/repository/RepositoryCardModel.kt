@@ -9,9 +9,14 @@ data class RepositoryCardModel(
     val description: String,
     val stars: String,
     val language: LanguageModel?,
+    val cardSize: CardSize,
 ): CardModel
 
 data class LanguageModel(
     val language: String,
     val color: String,
 ): CardModel
+
+enum class CardSize {
+    FULL, MINI
+}

@@ -14,10 +14,14 @@ internal class HorizontalCardItem(
 ) : BindableItem<CardsHorizontalBinding>() {
 
     override fun bind(viewBinding: CardsHorizontalBinding, position: Int) {
-        viewBinding.recycler.layoutManager =
-            LinearLayoutManager(viewBinding.recycler.context, LinearLayoutManager.HORIZONTAL, false)
+        with(viewBinding.recycler) {
+            layoutManager =
+                LinearLayoutManager(viewBinding.recycler.context, LinearLayoutManager.HORIZONTAL, false)
 
-        cardProcessor.process(card.cards, viewBinding.recycler)
+            cardProcessor.process(card.cards, this)
+
+            addItemDecoration( CarouselItemDecoration())
+        }
     }
 
     override fun getLayout() = R.layout.cards_horizontal

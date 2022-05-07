@@ -4,6 +4,7 @@ import de.tigrao.github.domain.profile.GetProfileUseCase
 import de.tigrao.github.domain.profile.model.RepositoryModel
 import de.tigrao.github.sdu.card.model.CardModel
 import de.tigrao.github.sdu.card.model.profile.ProfileCardModel
+import de.tigrao.github.sdu.card.model.repository.CardSize
 import de.tigrao.github.sdu.card.model.repository.LanguageModel
 import de.tigrao.github.sdu.card.model.repository.RepositoryCardModel
 import de.tigrao.github.sdu.card.model.support.HorizontalCardModel
@@ -16,8 +17,7 @@ import javax.inject.Inject
 
 internal interface FetchProfileDataUseCase {
     suspend operator fun invoke(
-        userName: String,
-        forced: Boolean
+        userName: String, forced: Boolean
     ): ResultDomain<UserProfileUiModel, UserProfileUiErrorModel.GenericError>
 }
 
@@ -25,8 +25,7 @@ internal class FetchProfileDataUseCaseDefault @Inject constructor(
     private val getProfileDataUseCase: GetProfileUseCase,
 ) : FetchProfileDataUseCase {
     override suspend fun invoke(
-        userName: String,
-        forced: Boolean
+        userName: String, forced: Boolean
     ): ResultDomain<UserProfileUiModel, UserProfileUiErrorModel.GenericError> {
         return getProfileDataUseCase(userName).transformMap(success = {
 
@@ -49,7 +48,7 @@ internal class FetchProfileDataUseCaseDefault @Inject constructor(
             responseList.add(pinnedTitle)
 
             it.pinnedRepos.map { repo ->
-                responseList.add(mapRepo(repo))
+                responseList.add(mapRepo(repo, CardSize.FULL))
             }
 
             val topTitle: CardModel = TitleCardModel(
@@ -59,7 +58,9 @@ internal class FetchProfileDataUseCaseDefault @Inject constructor(
             )
             responseList.add(topTitle)
 
-            val topRepositories: List<CardModel> = it.topRepos.map(::mapRepo)
+            val topRepositories: List<CardModel> = it.topRepos.map {
+                mapRepo(it, CardSize.MINI)
+            }
             responseList.add(HorizontalCardModel(topRepositories))
 
             val starredTitle: CardModel = TitleCardModel(
@@ -74,15 +75,17 @@ internal class FetchProfileDataUseCaseDefault @Inject constructor(
         })
     }
 
-    private fun mapRepo(repo: RepositoryModel): CardModel = RepositoryCardModel(image = repo.image,
-                                                                                name = repo.owner,
-                                                                                title = repo.title,
-                                                                                description = repo.description,
-                                                                                stars = repo.stars.toString(),
-                                                                                language = repo.language?.let { language ->
-                                                                                    LanguageModel(
-                                                                                        language = language.name,
-                                                                                        color = language.color,
-                                                                                    )
-                                                                                })
+    private fun mapRepo(repo: RepositoryModel, cardSize: CardSize): CardModel = RepositoryCardModel(
+        image = repo.image,
+        cardSize = cardSize,
+        name = repo.owner,
+        title = repo.title,
+        description = repo.description,
+        stars = repo.stars.toString(),
+        language = repo.language?.let { language ->
+            LanguageModel(
+                language = language.name,
+                color = language.color,
+            )
+        })
 }
