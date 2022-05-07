@@ -2,6 +2,8 @@ query UserProfile {
   user(login: "GabriellCosta") @nonnull {
     avatarUrl
     bio
+    login
+    email
     followers {
       totalCount
     }

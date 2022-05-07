@@ -26,8 +26,8 @@ internal class GetProfileDefaultUseCase @Inject constructor(
                 UserProfileModel(
                     name = it.name,
                     image = it.avatarUrl.toString(),
-                    nickName = it.bio.orEmpty(),
-                    description = it.bio.orEmpty(),
+                    nickName = it.login,
+                    description = it.email.ifEmpty { it.bio.orEmpty() },
                     followers = it.followers.totalCount,
                     following = it.following.totalCount,
                     pinnedRepos = it.pinnedItems.edges.map {
