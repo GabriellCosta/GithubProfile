@@ -25,6 +25,7 @@ internal class GetProfileDefaultUseCase @Inject constructor(
             success.user.let {
                 UserProfileModel(
                     name = it.name,
+                    image = it.avatarUrl.toString(),
                     nickName = it.bio.orEmpty(),
                     description = it.bio.orEmpty(),
                     followers = it.followers.totalCount,
@@ -33,7 +34,7 @@ internal class GetProfileDefaultUseCase @Inject constructor(
                         val item = it?.node?.onRepository!!
 
                         RepositoryModel(
-                            name = item.name,
+                            owner = item.owner.login,
                             description = item.description.orEmpty(),
                             language = item.languages?.edges?.map {
                                 it?.node?.let {
@@ -44,13 +45,15 @@ internal class GetProfileDefaultUseCase @Inject constructor(
                                 }
                             }?.firstOrNull(),
                             image = item.owner.avatarUrl.toString(),
+                            stars = item.forks.totalCount,
+                            title = item.name
                         )
                     },
                     topRepos = it.repositories.nodes?.map {
                         val item = it!!
 
                         RepositoryModel(
-                            name = item.name,
+                            owner = item.owner.login,
                             description = item.description.orEmpty(),
                             language = item.languages?.nodes?.map {
                                 it?.let {
@@ -61,6 +64,8 @@ internal class GetProfileDefaultUseCase @Inject constructor(
                                 }
                             }?.firstOrNull(),
                             image = item.owner.avatarUrl.toString(),
+                            title = item.name,
+                            stars = item.forkCount,
                         )
                     }.orEmpty(),
                 )

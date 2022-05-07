@@ -17,6 +17,7 @@ query UserProfile {
             name
             owner {
               avatarUrl
+              login
             }
             forks {
               totalCount
@@ -47,6 +48,7 @@ query UserProfile {
         }
         owner {
           avatarUrl
+          login
         }
       }
     }

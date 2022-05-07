@@ -8,7 +8,7 @@ data class RepositoryCardModel(
     val title: String,
     val description: String,
     val stars: String,
-    val language: LanguageModel,
+    val language: LanguageModel?,
 ): CardModel
 
 data class LanguageModel(

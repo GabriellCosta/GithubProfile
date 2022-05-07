@@ -3,6 +3,7 @@ package de.tigrao.github.domain.profile.model
 data class UserProfileModel(
     val name: String,
     val nickName: String,
+    val image: String,
     val description: String,
     val following: Int,
     val followers: Int,
@@ -11,9 +12,11 @@ data class UserProfileModel(
 )
 
 data class RepositoryModel(
-    val name: String,
+    val owner: String,
     val image: String,
+    val stars: Int,
     val language: LanguageModel?,
+    val title: String,
     val description: String,
 )
 
