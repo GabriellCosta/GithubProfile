@@ -53,6 +53,20 @@ object Dependencies {
 
     val paging = "androidx.paging:paging-runtime-ktx:${Versions.paging}"
 
+    object Groupie {
+        private const val VERSION = "2.10.1"
+
+        private const val core = "com.github.lisawray.groupie:groupie:$VERSION"
+        private const val binding = "com.github.lisawray.groupie:groupie-viewbinding:$VERSION"
+
+        val addLibs = closureOf<Project> {
+            with(project.dependencies) {
+                add("implementation", core)
+                add("implementation", binding)
+            }
+        }
+    }
+
     object Dagger {
         private const val VERSION = "2.41"
 
