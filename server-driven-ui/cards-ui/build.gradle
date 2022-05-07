@@ -17,7 +17,6 @@ dependencies {
     implementation(projects.serverDrivenUi.cardsModel)
 
     implementation dependencies.Dependencies.constraintLayout
-    implementation dependencies.Dependencies.recyclerView
     implementation dependencies.Dependencies.materialDesign
     implementation dependencies.Dependencies.appCompat
     implementation dependencies.Dependencies.coreKTX
