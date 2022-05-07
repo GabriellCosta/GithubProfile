@@ -17,7 +17,7 @@ internal object AppModule {
 
     @Singleton
     @Provides
-    fun provideNetworkBuilder() = NetworkBuilder(BuildConfig.API_URL)
+    fun provideNetworkBuilder() = NetworkBuilder(BuildConfig.API_URL, BuildConfig.ACCESS_TOKEN)
 }
 
 @Singleton
