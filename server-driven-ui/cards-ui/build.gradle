@@ -14,6 +14,7 @@ dependencies {
     implementation dependencies.Dependencies.kotlinStdlib
 
     implementation(projects.styleguide)
+    implementation(projects.serverDrivenUi.cardsModel)
 
     implementation dependencies.Dependencies.constraintLayout
     implementation dependencies.Dependencies.recyclerView
