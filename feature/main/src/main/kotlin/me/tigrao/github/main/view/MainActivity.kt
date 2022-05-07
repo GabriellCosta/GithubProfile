@@ -5,12 +5,17 @@ import androidx.appcompat.app.AppCompatActivity
 import br.com.hippopotamus.tabarato.designsystem.viewstate.StateViewArg
 import by.kirich1409.viewbindingdelegate.viewBinding
 import de.tigrao.github.sdu.card.model.CardModel
+import dev.tigrao.github.sdu.card.processor.CardProcessor
 import me.tigrao.github.main.databinding.ActivityMainBinding
 import me.tigrao.github.main.presenter.ProfileContract
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), ProfileContract.View {
 
-    private lateinit var presenter: ProfileContract.Presenter
+    internal lateinit var presenter: ProfileContract.Presenter
+
+    @Inject
+    internal lateinit var cardProcessor: CardProcessor
 
     private val binder by viewBinding<MainActivity, ActivityMainBinding> {
         ActivityMainBinding.inflate(layoutInflater)
@@ -22,11 +27,11 @@ class MainActivity : AppCompatActivity(), ProfileContract.View {
         //presenter.fetchProfileData()
     }
 
-    override fun setProfileData(): List<CardModel> {
-        TODO("Not yet implemented")
+    override fun setProfileData(cards: List<CardModel>) {
+        cardProcessor.process(cards, binder.recycler)
     }
 
-    override fun setErrorState(): StateViewArg {
+    override fun setErrorState(state: StateViewArg) {
         TODO("Not yet implemented")
     }
 }

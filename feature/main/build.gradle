@@ -18,6 +18,7 @@ dependencies {
     implementation(projects.infra.apiCaller)
     implementation(projects.domain.profile)
     implementation(projects.serverDrivenUi.cardsModel)
+    implementation(projects.serverDrivenUi.cardsProcessorPublic)
 
     implementation dependencies.Dependencies.constraintLayout
     implementation dependencies.Dependencies.recyclerView

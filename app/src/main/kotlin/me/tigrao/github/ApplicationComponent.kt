@@ -7,6 +7,7 @@ import dagger.android.AndroidInjectionModule
 import de.tigrao.github.domain.profile.di.ProfileModule
 import dev.tigrao.github.infra.network.NetworkBuilder
 import dev.tigrao.github.infra.network.di.NetworkModule
+import dev.tigrao.github.sdu.card.ui.di.CardUiModule
 import me.tigrao.github.main.di.MainActivityModule
 import javax.inject.Singleton
 
@@ -28,6 +29,7 @@ internal object AppModule {
         MainActivityModule::class,
         NetworkModule::class,
         ProfileModule::class,
+        CardUiModule::class,
     ],
 
     )

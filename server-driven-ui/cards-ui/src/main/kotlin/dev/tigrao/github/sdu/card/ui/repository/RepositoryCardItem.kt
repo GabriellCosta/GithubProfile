@@ -21,7 +21,7 @@ internal class RepositoryCardItem(
 
             this.txtStars.text = card.stars
 
-            this.txtLanguage.text = card.language.language
+            this.txtLanguage.text = card.language?.language
         }
     }
 

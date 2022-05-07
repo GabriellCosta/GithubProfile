@@ -6,9 +6,9 @@ import de.tigrao.github.sdu.card.model.CardModel
 interface ProfileContract {
 
     interface View {
-        fun setProfileData(): List<CardModel>
+        fun setProfileData(cards: List<CardModel>)
 
-        fun setErrorState(): StateViewArg
+        fun setErrorState(state: StateViewArg)
     }
 
     interface Presenter {

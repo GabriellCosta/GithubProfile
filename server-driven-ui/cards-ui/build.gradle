@@ -15,6 +15,9 @@ dependencies {
 
     implementation(projects.styleguide)
     implementation(projects.serverDrivenUi.cardsModel)
+    implementation(projects.serverDrivenUi.cardsProcessorPublic)
+
+    dependencies.Dependencies.Dagger.addLibs(project)
 
     implementation dependencies.Dependencies.constraintLayout
     implementation dependencies.Dependencies.materialDesign

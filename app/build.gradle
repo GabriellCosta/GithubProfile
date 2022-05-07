@@ -45,6 +45,7 @@ dependencies {
     implementation(projects.infra.network.public)
     implementation(projects.domain.profile)
     implementation(projects.serverDrivenUi.cardsUi)
+    implementation(projects.serverDrivenUi.cardsProcessorPublic)
 
     implementation(dependencies.Dependencies.okhttpLogger)
     implementation(dependencies.Dependencies.Apollo.runtime)
