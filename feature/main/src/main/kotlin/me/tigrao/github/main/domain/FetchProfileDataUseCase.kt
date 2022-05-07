@@ -76,7 +76,7 @@ internal class FetchProfileDataUseCaseDefault @Inject constructor(
 
     private fun mapRepo(repo: RepositoryModel): CardModel = RepositoryCardModel(image = repo.image,
                                                                                 name = repo.owner,
-                                                                                title = repo.owner,
+                                                                                title = repo.title,
                                                                                 description = repo.description,
                                                                                 stars = repo.stars.toString(),
                                                                                 language = repo.language?.let { language ->
