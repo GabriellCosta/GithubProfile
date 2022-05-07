@@ -5,13 +5,14 @@ plugins {
 }
 
 android {
-
     buildFeatures {
-        viewBinding = true
+        viewBinding true
     }
 }
 
 dependencies {
+    implementation dependencies.Dependencies.kotlinStdlib
+
     implementation(projects.styleguide)
 
     implementation dependencies.Dependencies.constraintLayout
@@ -24,6 +25,5 @@ dependencies {
 
     implementation dependencies.Dependencies.Kirich.viewBindingProperty
 
-    testImplementation(dependencies.TestDependencies.jUnit)
-    testImplementation(dependencies.TestDependencies.mockk)
+    dependencies.Dependencies.Groupie.addLibs(project)
 }
