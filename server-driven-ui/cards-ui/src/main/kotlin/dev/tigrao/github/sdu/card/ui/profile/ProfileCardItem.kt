@@ -6,6 +6,7 @@ import com.xwray.groupie.viewbinding.BindableItem
 import de.tigrao.github.sdu.card.model.profile.ProfileCardModel
 import dev.tigrao.github.sdu.card.ui.R
 import dev.tigrao.github.sdu.card.ui.databinding.CardsUserProfileBinding
+import dev.tigrao.github.sdu.card.ui.support.loadImage
 
 internal class ProfileCardItem(
     private val profileCardModel: ProfileCardModel,
@@ -13,7 +14,7 @@ internal class ProfileCardItem(
 
     override fun bind(viewBinding: CardsUserProfileBinding, position: Int) {
         with(viewBinding) {
-            Glide.with(cardImage).load(profileCardModel.image).into(cardImage)
+            cardImage.loadImage(profileCardModel.image)
 
             txtName.text = profileCardModel.title
             txtNick.text = profileCardModel.subtitle

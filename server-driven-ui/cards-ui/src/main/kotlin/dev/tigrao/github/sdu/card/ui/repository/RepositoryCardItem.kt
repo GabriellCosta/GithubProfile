@@ -6,6 +6,7 @@ import com.xwray.groupie.viewbinding.BindableItem
 import de.tigrao.github.sdu.card.model.repository.RepositoryCardModel
 import dev.tigrao.github.sdu.card.ui.R
 import dev.tigrao.github.sdu.card.ui.databinding.CardsRepositoryBinding
+import dev.tigrao.github.sdu.card.ui.support.loadImage
 
 internal class RepositoryCardItem(
     private val card: RepositoryCardModel,
@@ -13,7 +14,7 @@ internal class RepositoryCardItem(
 
     override fun bind(viewBinding: CardsRepositoryBinding, position: Int) {
         with(viewBinding) {
-            Glide.with(cardImage).load(card.image).into(cardImage)
+            cardImage.loadImage(card.image)
 
             this.txtTitle.text = card.title
             this.txtName.text = card.name
