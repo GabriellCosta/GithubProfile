@@ -20,6 +20,7 @@ dependencies {
 
     implementation dependencies.Dependencies.constraintLayout
     implementation dependencies.Dependencies.recyclerView
+    implementation dependencies.Dependencies.pullToRefresh
     implementation dependencies.Dependencies.materialDesign
     implementation dependencies.Dependencies.appCompat
     implementation dependencies.Dependencies.coreKTX
@@ -29,7 +30,6 @@ dependencies {
     dependencies.Dependencies.Dagger.addLibs(project)
     implementation dependencies.Dependencies.Dagger.android
 
-    implementation dependencies.Dependencies.paging
     implementation dependencies.Dependencies.Kirich.viewBindingProperty
 
     testImplementation(dependencies.TestDependencies.jUnit)

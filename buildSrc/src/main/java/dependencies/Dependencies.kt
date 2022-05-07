@@ -51,7 +51,7 @@ object Dependencies {
 
     val imageFetcher = "com.github.bumptech.glide:glide:${Versions.imageFetcher}"
 
-    val paging = "androidx.paging:paging-runtime-ktx:${Versions.paging}"
+    const val pullToRefresh = "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 
     object Groupie {
         private const val VERSION = "2.10.1"
