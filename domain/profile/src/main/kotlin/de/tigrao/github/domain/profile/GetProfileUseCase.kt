@@ -8,6 +8,7 @@ import de.tigrao.github.domain.profile.model.UserProfileModel
 import deb.tigrao.github.infra.api.ResultDomain
 import deb.tigrao.github.infra.api.callApi
 import dev.tigrao.github.UserProfileQuery
+import dev.tigrao.github.fragment.LanguageFragment
 import javax.inject.Inject
 
 interface GetProfileUseCase {
@@ -36,14 +37,7 @@ internal class GetProfileDefaultUseCase @Inject constructor(
                         RepositoryModel(
                             owner = item.owner.login,
                             description = item.description.orEmpty(),
-                            language = item.languages?.edges?.map {
-                                it?.node?.let {
-                                    LanguageModel(
-                                        name = it.name,
-                                        color = it.color!!,
-                                    )
-                                }
-                            }?.firstOrNull(),
+                            language = mapFrom(item.primaryLanguage?.languageFragment),
                             image = item.owner.avatarUrl.toString(),
                             stars = item.forks.totalCount,
                             title = item.name
@@ -55,14 +49,7 @@ internal class GetProfileDefaultUseCase @Inject constructor(
                         RepositoryModel(
                             owner = item.owner.login,
                             description = item.description.orEmpty(),
-                            language = item.languages?.nodes?.map {
-                                it?.let {
-                                    LanguageModel(
-                                        name = it.name,
-                                        color = it.color!!,
-                                    )
-                                }
-                            }?.firstOrNull(),
+                            language = mapFrom(item.primaryLanguage?.languageFragment),
                             image = item.owner.avatarUrl.toString(),
                             title = item.name,
                             stars = item.forkCount,
@@ -74,5 +61,13 @@ internal class GetProfileDefaultUseCase @Inject constructor(
             UserProfileErrorModel.GenericError
         })
     }
+
+    private fun mapFrom(from: LanguageFragment?) =
+        from?.let {
+            LanguageModel(
+                name = it.name,
+                color = it.color.orEmpty(),
+            )
+        }
 
 }

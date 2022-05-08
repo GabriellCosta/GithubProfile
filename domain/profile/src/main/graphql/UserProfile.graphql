@@ -1,3 +1,8 @@
+fragment LanguageFragment on Language {
+  name
+  color
+}
+
 query UserProfile {
   user(login: "GabriellCosta") @nonnull {
     avatarUrl
@@ -25,13 +30,8 @@ query UserProfile {
               totalCount
             }
             description
-            languages(first: 1) {
-              edges {
-                node {
-                  color
-                  name
-                }
-              }
+            primaryLanguage {
+              ...LanguageFragment
             }
           }
         }
@@ -42,11 +42,8 @@ query UserProfile {
         name
         description
         forkCount
-        languages(first: 1) {
-          nodes {
-            name
-            color
-          }
+        primaryLanguage {
+            ...LanguageFragment
         }
         owner {
           avatarUrl
