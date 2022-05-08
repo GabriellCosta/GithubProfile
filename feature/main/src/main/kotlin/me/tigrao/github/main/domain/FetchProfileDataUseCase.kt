@@ -68,6 +68,12 @@ internal class FetchProfileDataUseCaseDefault @Inject constructor(
                     text = "View all",
                 )
             )
+            responseList.add(starredTitle)
+
+            val starRepositories: List<CardModel> = it.starsRepo.map {
+                mapRepo(it, CardSize.MINI)
+            }
+            responseList.add(HorizontalCardModel(starRepositories))
 
             UserProfileUiModel(responseList)
         }, error = {

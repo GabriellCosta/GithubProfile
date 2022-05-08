@@ -9,6 +9,7 @@ data class UserProfileModel(
     val followers: Int,
     val pinnedRepos: List<RepositoryModel>,
     val topRepos: List<RepositoryModel>,
+    val starsRepo: List<RepositoryModel>,
 )
 
 data class RepositoryModel(

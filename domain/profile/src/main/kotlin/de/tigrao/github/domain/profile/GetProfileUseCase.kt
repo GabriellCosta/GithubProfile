@@ -39,7 +39,7 @@ internal class GetProfileDefaultUseCase @Inject constructor(
                             description = item.description.orEmpty(),
                             language = mapFrom(item.primaryLanguage?.languageFragment),
                             image = item.owner.avatarUrl.toString(),
-                            stars = item.forks.totalCount,
+                            stars = item.stargazerCount,
                             title = item.name
                         )
                     },
@@ -52,9 +52,21 @@ internal class GetProfileDefaultUseCase @Inject constructor(
                             language = mapFrom(item.primaryLanguage?.languageFragment),
                             image = item.owner.avatarUrl.toString(),
                             title = item.name,
-                            stars = item.forkCount,
+                            stars = item.stargazerCount,
                         )
                     }.orEmpty(),
+                    starsRepo = it.starredRepositories.edges?.map {
+                        val item = it?.node!!
+
+                        RepositoryModel(
+                            owner = item.owner.login,
+                            description = item.description.orEmpty(),
+                            language = mapFrom(item.primaryLanguage?.languageFragment),
+                            image = item.owner.avatarUrl.toString(),
+                            title = item.name,
+                            stars = item.stargazerCount,
+                        )
+                    }.orEmpty()
                 )
             }
         }, error = {

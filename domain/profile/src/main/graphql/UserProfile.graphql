@@ -26,9 +26,7 @@ query UserProfile {
               avatarUrl
               login
             }
-            forks {
-              totalCount
-            }
+            stargazerCount
             description
             primaryLanguage {
               ...LanguageFragment
@@ -37,17 +35,35 @@ query UserProfile {
         }
       }
     }
-    repositories(first: 10, orderBy: {field: STARGAZERS, direction: ASC}) {
+    repositories(first: 10, orderBy: { field: STARGAZERS, direction: ASC }) {
       nodes {
         name
         description
-        forkCount
+        stargazerCount
         primaryLanguage {
-            ...LanguageFragment
+          ...LanguageFragment
         }
         owner {
           avatarUrl
           login
+        }
+      }
+    }
+    starredRepositories(first: 10) {
+      edges {
+        cursor
+        node {
+          id
+          name
+          primaryLanguage {
+            ...LanguageFragment
+          }
+          description
+          owner {
+            avatarUrl
+            login
+          }
+          stargazerCount
         }
       }
     }
