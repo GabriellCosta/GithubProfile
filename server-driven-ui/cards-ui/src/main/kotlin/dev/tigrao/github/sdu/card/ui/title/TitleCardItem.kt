@@ -1,5 +1,6 @@
 package dev.tigrao.github.sdu.card.ui.title
 
+import android.graphics.Paint
 import android.view.View
 import com.xwray.groupie.viewbinding.BindableItem
 import de.tigrao.github.sdu.card.model.title.TitleCardModel
@@ -14,6 +15,8 @@ internal class TitleCardItem(
         with(viewBinding) {
             txtTitle.text = card.title
             btnAction.text = card.action.text
+
+            btnAction.paintFlags = btnAction.paintFlags + Paint.UNDERLINE_TEXT_FLAG
         }
     }
 

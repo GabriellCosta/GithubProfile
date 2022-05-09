@@ -27,6 +27,8 @@
         <item name="colorPrimaryVariant">@color/colorPrimaryDark</item>
         <item name="colorSecondary">@color/colorAccent</item>
 
+        <item name="buttonLink">@style/Widget.AppCompat.Button.Borderless.Link</item>
+
         <item name="spacingXXXS">@dimen/spacing_XXXS</item>
         <item name="spacingXXS">@dimen/spacing_XXS</item>
         <item name="spacingXS">@dimen/spacing_XS</item>

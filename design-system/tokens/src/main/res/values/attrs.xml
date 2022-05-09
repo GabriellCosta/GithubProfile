@@ -16,6 +16,8 @@
     <attr name="textAppearanceSubtitle1" format="reference" />
     <attr name="textAppearanceSubtitle2" format="reference" />
 
+    <attr name="buttonLink" format="reference" />
+
     <attr name="spacingXXXS" format="dimension" />
     <attr name="spacingXXS" format="dimension" />
     <attr name="spacingXS" format="dimension" />
