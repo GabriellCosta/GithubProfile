@@ -68,6 +68,8 @@
         <!--region start bottom-->
 
         <TextView
+            android:drawablePadding="?attr/spacingXXXS"
+            app:drawableStartCompat="@drawable/ic_star"
             android:id="@+id/txt_stars"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
