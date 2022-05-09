@@ -6,7 +6,11 @@ import de.tigrao.github.domain.profile.GetProfileDefaultUseCase
 import de.tigrao.github.domain.profile.GetProfileUseCase
 import javax.inject.Singleton
 
-@Module
+@Module(
+    includes = [
+        ProfileMapperModule::class
+    ]
+)
 internal interface ProfileDomainModule {
 
     @Singleton
