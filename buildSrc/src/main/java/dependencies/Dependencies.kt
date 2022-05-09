@@ -83,9 +83,10 @@ object Dependencies {
     }
 
     object Apollo {
-        private const val VERSION = "3.2.1"
+        private const val VERSION = "3.3.0"
 
         const val runtime = "com.apollographql.apollo3:apollo-runtime:$VERSION"
+        const val cache = "com.apollographql.apollo3:apollo-normalized-cache-sqlite:$VERSION"
     }
 
     object Moshi {
