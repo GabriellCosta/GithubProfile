@@ -2,6 +2,7 @@ package me.tigrao.github.main.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.hippopotamus.tabarato.designsystem.viewstate.StateViewArg
@@ -41,13 +42,19 @@ class MainActivity : AppCompatActivity(), ProfileContract.View {
         }
     }
 
+    private fun fetchDataRefresh() {
+        lifecycleScope.launch {
+            presenter.forceRefresh()
+        }
+    }
+
     private fun prepareRecycler() {
         with(binder.recycler) {
             this.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         }
 
         binder.swipe.setOnRefreshListener {
-            fetchData()
+            fetchDataRefresh()
         }
     }
 
@@ -59,9 +66,14 @@ class MainActivity : AppCompatActivity(), ProfileContract.View {
     override fun setProfileData(cards: List<CardModel>) {
         cardProcessor.process(cards, binder.recycler)
         binder.swipe.isRefreshing = false
+        binder.state.isVisible = false
+        binder.recycler.isVisible = true
     }
 
     override fun setErrorState(state: StateViewArg) {
         binder.swipe.isRefreshing = false
+        binder.state.isVisible = true
+        binder.recycler.isVisible = false
+        binder.state.prepareLayout(state)
     }
 }

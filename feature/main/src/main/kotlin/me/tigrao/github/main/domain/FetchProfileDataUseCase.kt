@@ -29,7 +29,7 @@ internal class FetchProfileDataUseCaseDefault @Inject constructor(
         userName: String,
         forced: Boolean
     ): ResultDomain<UserProfileUiModel, UserProfileUiErrorModel.GenericError> {
-        return getProfileDataUseCase(userName).transformMap(success = {
+        return getProfileDataUseCase(userName, forced).transformMap(success = {
 
             val responseList = mutableListOf<CardModel>()
 

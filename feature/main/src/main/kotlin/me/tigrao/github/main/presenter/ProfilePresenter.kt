@@ -1,9 +1,7 @@
 package me.tigrao.github.main.presenter
 
-import br.com.hippopotamus.tabarato.designsystem.viewstate.ButtonViewArg
 import br.com.hippopotamus.tabarato.designsystem.viewstate.StateViewArg
 import br.com.hippopotamus.tabarato.designsystem.viewstate.StateViewType
-import br.com.tabarato.infra.action.dispatcher.ViewAction
 import me.tigrao.github.main.domain.FetchProfileDataUseCase
 import javax.inject.Inject
 
@@ -39,9 +37,7 @@ internal class ProfilePresenter @Inject constructor(
                 StateViewArg(
                     type = StateViewType.Api(),
                     title = "Error to Get data : (",
-                    positiveButton = ButtonViewArg(
-                        text = "Try Again", action = object : ViewAction {}
-                    )
+                    description = "Pull to refresh to try again",
                 )
             )
         }
