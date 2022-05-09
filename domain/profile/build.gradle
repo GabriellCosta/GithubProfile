@@ -12,6 +12,7 @@ dependencies {
     implementation dependencies.Dependencies.kotlinStdlib
 
     implementation dependencies.Dependencies.Apollo.runtime
+    implementation dependencies.Dependencies.Apollo.sqLiteJvm
 
     implementation projects.infra.apiCaller
 

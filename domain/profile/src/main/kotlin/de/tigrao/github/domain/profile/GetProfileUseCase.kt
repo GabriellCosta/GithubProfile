@@ -1,6 +1,8 @@
 package de.tigrao.github.domain.profile
 
 import com.apollographql.apollo3.ApolloClient
+import com.apollographql.apollo3.cache.normalized.FetchPolicy
+import com.apollographql.apollo3.cache.normalized.fetchPolicy
 import de.tigrao.github.domain.profile.mapper.ProfileErrorMapper
 import de.tigrao.github.domain.profile.mapper.ProfileSuccessMapper
 import de.tigrao.github.domain.profile.model.UserProfileErrorModel
@@ -22,7 +24,11 @@ internal class GetProfileDefaultUseCase @Inject constructor(
 
     override suspend fun invoke(userName: String): ResultDomain<UserProfileModel, UserProfileErrorModel> {
         return callApi {
-            apolloClient.query(UserProfileQuery()).execute().dataAssertNoErrors
+            apolloClient
+                .query(UserProfileQuery())
+                .fetchPolicy(FetchPolicy.CacheFirst)
+                .execute()
+                .dataAssertNoErrors
         }.transformMap(
             successMapper::mapFrom,
             errorMapper::mapFrom,
