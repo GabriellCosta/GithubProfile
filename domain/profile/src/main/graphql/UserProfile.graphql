@@ -51,7 +51,6 @@ query UserProfile {
     }
     starredRepositories(first: 10) {
       edges {
-        cursor
         node {
           id
           name
