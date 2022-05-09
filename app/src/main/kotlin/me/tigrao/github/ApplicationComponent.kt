@@ -1,5 +1,7 @@
 package me.tigrao.github
 
+import android.app.Application
+import dagger.BindsInstance
 import dagger.Component
 import dagger.Module
 import dagger.Provides
@@ -36,6 +38,14 @@ internal object AppModule {
 
     )
 interface ApplicationComponent {
+
+    @Component.Builder
+    interface Builder {
+        fun build(): ApplicationComponent
+
+        @BindsInstance
+        fun application(application: Application): Builder
+    }
 
     fun inject(app: CustomApplication)
 }

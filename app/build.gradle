@@ -49,6 +49,7 @@ dependencies {
 
     implementation(dependencies.Dependencies.okhttpLogger)
     implementation(dependencies.Dependencies.Apollo.runtime)
+    implementation(dependencies.Dependencies.Apollo.sqLite)
 
     dependencies.Dependencies.Dagger.addLibs(project)
     implementation dependencies.Dependencies.Dagger.android

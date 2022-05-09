@@ -1,5 +1,8 @@
 package dev.tigrao.github.infra.network.di
 
+import android.app.Application
+import android.content.Context
+import com.apollographql.apollo3.cache.normalized.sql.SqlNormalizedCacheFactory
 import dagger.Module
 import dagger.Provides
 import dev.tigrao.github.infra.network.NetworkBuilder
@@ -12,6 +15,8 @@ import javax.inject.Singleton
 @Module
 object NetworkModule {
 
+    private const val CACHE_NAME = "apollo.db"
+
     @Provides
     @Singleton
     fun provideAuthInterceptor(networkBuilder: NetworkBuilder): Interceptor =
@@ -22,8 +27,14 @@ object NetworkModule {
     fun provideApollo(
         networkBuilder: NetworkBuilder,
         okhttpClientFactory: OkhttpClientFactory,
+        normalizedCacheFactory: SqlNormalizedCacheFactory,
     ) = NetworkService(
         networkBuilder = networkBuilder,
         okhttpClientFactory = okhttpClientFactory,
+        sqlNormalizedCacheFactory = normalizedCacheFactory
     ).createApolloService()
+
+    @Provides
+    fun provideNormalizedCache(context: Application) =
+        SqlNormalizedCacheFactory(context, CACHE_NAME)
 }
