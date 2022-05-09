@@ -9,5 +9,4 @@ internal fun ImageView.loadImage(url: String) {
         .load(url)
         .apply(RequestOptions().circleCrop())
         .into(this)
-
 }

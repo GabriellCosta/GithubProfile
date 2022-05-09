@@ -10,12 +10,12 @@ data class RepositoryCardModel(
     val stars: String,
     val language: LanguageModel?,
     val cardSize: CardSize,
-): CardModel
+) : CardModel
 
 data class LanguageModel(
     val language: String,
     val color: String,
-): CardModel
+) : CardModel
 
 enum class CardSize {
     FULL, MINI

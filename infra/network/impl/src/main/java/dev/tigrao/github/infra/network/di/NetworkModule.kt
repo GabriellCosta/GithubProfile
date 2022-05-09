@@ -26,5 +26,4 @@ object NetworkModule {
         networkBuilder = networkBuilder,
         okhttpClientFactory = okhttpClientFactory,
     ).createApolloService()
-
 }

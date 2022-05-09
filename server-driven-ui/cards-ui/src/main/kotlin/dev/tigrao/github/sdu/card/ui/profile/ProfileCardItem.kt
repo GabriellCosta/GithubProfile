@@ -1,7 +1,6 @@
 package dev.tigrao.github.sdu.card.ui.profile
 
 import android.view.View
-import com.bumptech.glide.Glide
 import com.xwray.groupie.viewbinding.BindableItem
 import de.tigrao.github.sdu.card.model.profile.ProfileCardModel
 import dev.tigrao.github.sdu.card.ui.R
@@ -28,5 +27,4 @@ internal class ProfileCardItem(
     override fun getLayout() = R.layout.cards_user_profile
 
     override fun initializeViewBinding(view: View) = CardsUserProfileBinding.bind(view)
-
 }

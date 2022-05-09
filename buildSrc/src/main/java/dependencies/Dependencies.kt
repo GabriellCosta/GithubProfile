@@ -25,7 +25,6 @@ internal object Versions {
 
     const val mockitoKotlin = "2.0.0-RC3"
     const val mockitoDexMaker = "2.19.0"
-
 }
 
 object Dependencies {

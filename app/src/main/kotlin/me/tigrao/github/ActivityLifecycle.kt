@@ -5,7 +5,7 @@ import android.app.Application
 import android.os.Bundle
 import dagger.android.AndroidInjection
 
-internal class ActivityLifecycle: Application.ActivityLifecycleCallbacks {
+internal class ActivityLifecycle : Application.ActivityLifecycleCallbacks {
     override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
         AndroidInjection.inject(activity)
     }
@@ -33,5 +33,4 @@ internal class ActivityLifecycle: Application.ActivityLifecycleCallbacks {
     override fun onActivityDestroyed(activity: Activity) {
         // DO NOTHING
     }
-
 }

@@ -3,12 +3,9 @@ package dev.tigrao.github.sdu.card.ui.repository
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
-import android.graphics.drawable.ShapeDrawable
 import android.view.View
 import android.widget.FrameLayout
 import androidx.core.content.ContextCompat
-import com.bumptech.glide.Glide
-import com.google.android.material.card.MaterialCardView
 import com.xwray.groupie.viewbinding.BindableItem
 import de.tigrao.github.sdu.card.model.repository.CardSize
 import de.tigrao.github.sdu.card.model.repository.RepositoryCardModel

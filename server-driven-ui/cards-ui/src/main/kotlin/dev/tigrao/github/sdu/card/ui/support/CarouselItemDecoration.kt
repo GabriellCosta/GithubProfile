@@ -11,7 +11,10 @@ import dev.tigrao.github.sdu.card.ui.R
 internal class CarouselItemDecoration : RecyclerView.ItemDecoration() {
 
     override fun getItemOffsets(
-        outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State
+        outRect: Rect,
+        view: View,
+        parent: RecyclerView,
+        state: RecyclerView.State
     ) {
         super.getItemOffsets(outRect, view, parent, state)
         outRect.right = view.context.getAttrDimen(R.attr.spacingXS)

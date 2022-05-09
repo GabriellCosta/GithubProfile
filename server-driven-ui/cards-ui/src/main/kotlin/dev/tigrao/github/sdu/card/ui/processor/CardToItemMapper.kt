@@ -5,7 +5,6 @@ import de.tigrao.github.sdu.card.model.profile.ProfileCardModel
 import de.tigrao.github.sdu.card.model.repository.RepositoryCardModel
 import de.tigrao.github.sdu.card.model.support.HorizontalCardModel
 import de.tigrao.github.sdu.card.model.title.TitleCardModel
-import dev.tigrao.github.sdu.card.processor.CardProcessor
 import dev.tigrao.github.sdu.card.ui.profile.ProfileCardItem
 import dev.tigrao.github.sdu.card.ui.repository.RepositoryCardItem
 import dev.tigrao.github.sdu.card.ui.support.HorizontalCardItem
@@ -19,21 +18,19 @@ internal class CardToItemMapper @Inject constructor() {
         cardProcessorImpl: CardProcessorImpl
     ) = cards.mapNotNull { card ->
         when (card) {
-            is ProfileCardModel    -> {
+            is ProfileCardModel -> {
                 ProfileCardItem(card)
             }
             is RepositoryCardModel -> {
                 RepositoryCardItem(card)
             }
-            is TitleCardModel      -> {
+            is TitleCardModel -> {
                 TitleCardItem(card)
             }
             is HorizontalCardModel -> {
                 HorizontalCardItem(card, cardProcessorImpl)
             }
-            else                   -> null
+            else -> null
         }
     }
-
-
 }

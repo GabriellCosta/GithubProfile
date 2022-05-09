@@ -20,7 +20,7 @@ internal class HorizontalCardItem(
 
             cardProcessor.process(card.cards, this)
 
-            addItemDecoration( CarouselItemDecoration())
+            addItemDecoration(CarouselItemDecoration())
         }
     }
 

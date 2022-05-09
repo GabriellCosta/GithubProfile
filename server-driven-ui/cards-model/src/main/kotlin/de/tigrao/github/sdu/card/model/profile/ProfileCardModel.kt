@@ -8,4 +8,4 @@ data class ProfileCardModel(
     val subtitle: String,
     val contact: String,
     val bottomText: String,
-): CardModel
+) : CardModel

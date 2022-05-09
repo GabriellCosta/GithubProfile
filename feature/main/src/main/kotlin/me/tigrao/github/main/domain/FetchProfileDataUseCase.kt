@@ -17,7 +17,8 @@ import javax.inject.Inject
 
 internal interface FetchProfileDataUseCase {
     suspend operator fun invoke(
-        userName: String, forced: Boolean
+        userName: String,
+        forced: Boolean
     ): ResultDomain<UserProfileUiModel, UserProfileUiErrorModel.GenericError>
 }
 
@@ -25,7 +26,8 @@ internal class FetchProfileDataUseCaseDefault @Inject constructor(
     private val getProfileDataUseCase: GetProfileUseCase,
 ) : FetchProfileDataUseCase {
     override suspend fun invoke(
-        userName: String, forced: Boolean
+        userName: String,
+        forced: Boolean
     ): ResultDomain<UserProfileUiModel, UserProfileUiErrorModel.GenericError> {
         return getProfileDataUseCase(userName).transformMap(success = {
 

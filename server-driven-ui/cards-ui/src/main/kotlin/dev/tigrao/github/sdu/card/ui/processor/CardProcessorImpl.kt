@@ -2,7 +2,6 @@ package dev.tigrao.github.sdu.card.ui.processor
 
 import androidx.recyclerview.widget.RecyclerView
 import com.xwray.groupie.GroupieAdapter
-import com.xwray.groupie.Section
 import de.tigrao.github.sdu.card.model.CardModel
 import dev.tigrao.github.sdu.card.processor.CardProcessor
 import javax.inject.Inject

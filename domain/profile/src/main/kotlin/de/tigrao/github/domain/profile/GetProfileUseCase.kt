@@ -21,7 +21,6 @@ internal class GetProfileDefaultUseCase @Inject constructor(
     override suspend fun invoke(userName: String): ResultDomain<UserProfileModel, UserProfileErrorModel> {
         return callApi {
             apolloClient.query(UserProfileQuery()).execute().dataAssertNoErrors
-
         }.transformMap(success = { success ->
             success.user.let {
                 UserProfileModel(
@@ -81,5 +80,4 @@ internal class GetProfileDefaultUseCase @Inject constructor(
                 color = it.color.orEmpty(),
             )
         }
-
 }

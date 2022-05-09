@@ -5,7 +5,7 @@ import dagger.android.AndroidInjector
 import me.tigrao.github.main.view.MainActivity
 
 @Subcomponent
-interface MainSubComponent: AndroidInjector<MainActivity> {
+interface MainSubComponent : AndroidInjector<MainActivity> {
     @Subcomponent.Factory
-    interface Factory: AndroidInjector.Factory<MainActivity>
+    interface Factory : AndroidInjector.Factory<MainActivity>
 }
