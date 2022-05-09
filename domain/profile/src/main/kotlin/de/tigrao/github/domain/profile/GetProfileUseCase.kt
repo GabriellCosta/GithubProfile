@@ -9,6 +9,7 @@ import deb.tigrao.github.infra.api.ResultDomain
 import deb.tigrao.github.infra.api.callApi
 import dev.tigrao.github.UserProfileQuery
 import dev.tigrao.github.fragment.LanguageFragment
+import dev.tigrao.github.fragment.RepositoryFragment
 import javax.inject.Inject
 
 interface GetProfileUseCase {
@@ -18,6 +19,7 @@ interface GetProfileUseCase {
 internal class GetProfileDefaultUseCase @Inject constructor(
     private val apolloClient: ApolloClient
 ) : GetProfileUseCase {
+
     override suspend fun invoke(userName: String): ResultDomain<UserProfileModel, UserProfileErrorModel> {
         return callApi {
             apolloClient.query(UserProfileQuery()).execute().dataAssertNoErrors
@@ -30,41 +32,14 @@ internal class GetProfileDefaultUseCase @Inject constructor(
                     description = it.email.ifEmpty { it.bio.orEmpty() },
                     followers = it.followers.totalCount,
                     following = it.following.totalCount,
-                    pinnedRepos = it.pinnedItems.edges.map {
-                        val item = it?.node?.onRepository!!
-
-                        RepositoryModel(
-                            owner = item.owner.login,
-                            description = item.description.orEmpty(),
-                            language = mapFrom(item.primaryLanguage?.languageFragment),
-                            image = item.owner.avatarUrl.toString(),
-                            stars = item.stargazerCount,
-                            title = item.name
-                        )
+                    pinnedRepos = it.pinnedItems.edges.mapNotNull { edge ->
+                        edge?.node?.repositoryFragment?.let(::mapFrom)
                     },
-                    topRepos = it.repositories.nodes?.map {
-                        val item = it!!
-
-                        RepositoryModel(
-                            owner = item.owner.login,
-                            description = item.description.orEmpty(),
-                            language = mapFrom(item.primaryLanguage?.languageFragment),
-                            image = item.owner.avatarUrl.toString(),
-                            title = item.name,
-                            stars = item.stargazerCount,
-                        )
+                    topRepos = it.repositories.nodes?.mapNotNull { edge ->
+                        edge?.repositoryFragment?.let(::mapFrom)
                     }.orEmpty(),
-                    starsRepo = it.starredRepositories.edges?.map {
-                        val item = it?.node!!
-
-                        RepositoryModel(
-                            owner = item.owner.login,
-                            description = item.description.orEmpty(),
-                            language = mapFrom(item.primaryLanguage?.languageFragment),
-                            image = item.owner.avatarUrl.toString(),
-                            title = item.name,
-                            stars = item.stargazerCount,
-                        )
+                    starsRepo = it.starredRepositories.edges?.mapNotNull { edge ->
+                        edge?.node?.repositoryFragment?.let(::mapFrom)
                     }.orEmpty()
                 )
             }
@@ -72,6 +47,16 @@ internal class GetProfileDefaultUseCase @Inject constructor(
             UserProfileErrorModel.GenericError
         })
     }
+
+    fun mapFrom(from: RepositoryFragment) : RepositoryModel =
+        RepositoryModel(
+            owner = from.owner.login,
+            description = from.description.orEmpty(),
+            language = mapFrom(from.primaryLanguage?.languageFragment),
+            image = from.owner.avatarUrl.toString(),
+            stars = from.stargazerCount,
+            title = from.name
+        )
 
     private fun mapFrom(from: LanguageFragment?) =
         from?.let {

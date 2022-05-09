@@ -3,6 +3,20 @@ fragment LanguageFragment on Language {
   color
 }
 
+fragment RepositoryFragment on Repository {
+  id
+  name
+  primaryLanguage {
+    ...LanguageFragment
+  }
+  description
+  owner {
+    avatarUrl
+    login
+  }
+  stargazerCount
+}
+
 query UserProfile {
   user(login: "GabriellCosta") @nonnull {
     avatarUrl
@@ -19,50 +33,19 @@ query UserProfile {
     pinnedItems(first: 3) @nonnull {
       edges @nonnull {
         node {
-          ... on Repository {
-            id
-            name
-            owner {
-              avatarUrl
-              login
-            }
-            stargazerCount
-            description
-            primaryLanguage {
-              ...LanguageFragment
-            }
-          }
+          ...RepositoryFragment
         }
       }
     }
     repositories(first: 10, orderBy: { field: STARGAZERS, direction: ASC }) {
       nodes {
-        name
-        description
-        stargazerCount
-        primaryLanguage {
-          ...LanguageFragment
-        }
-        owner {
-          avatarUrl
-          login
-        }
+        ...RepositoryFragment
       }
     }
     starredRepositories(first: 10) {
       edges {
         node {
-          id
-          name
-          primaryLanguage {
-            ...LanguageFragment
-          }
-          description
-          owner {
-            avatarUrl
-            login
-          }
-          stargazerCount
+            ...RepositoryFragment
         }
       }
     }
