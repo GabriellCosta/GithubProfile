@@ -24,3 +24,7 @@ github_access_token = <YOUR KEY HERE>
     domains::profile method should be a pure jvm module, but right know is a android module due to
     sharedPreferences, we could create a infra module where a wrapper for sharedPreferences is created,
     this way all modules that want to use sharedPreferences would be pure jvm if they can
+
+- Remove Resource reference from FetchProfileDataUseCase
+    We could create a proper abstraction for resources usage, this way no domain layer would knew
+    about a android class like `resource` and also would be possible to get resource data
