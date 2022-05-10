@@ -24,6 +24,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2.3.3
 
+      - name: Restore gradle.properties
+        env:
+          ACCESS_TOKEN: ${{ secrets.AUTH_SECRET_APOLLO }}
+        shell: bash
+        run: |
+            mkdir -p ~/.gradle/
+            echo "GRADLE_USER_HOME=${HOME}/.gradle" >> $GITHUB_ENV
+            echo "${ACCESS_TOKEN}" > ~/.gradle/gradle.properties
+
       - name: Prepare cache
         uses: actions/cache@v2
         with:
