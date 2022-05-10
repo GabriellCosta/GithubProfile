@@ -1,6 +1,8 @@
 package me.tigrao.github.main.domain
 
 import android.content.res.Resources
+import br.com.hippopotamus.tabarato.designsystem.viewstate.StateViewArg
+import br.com.hippopotamus.tabarato.designsystem.viewstate.StateViewType
 import de.tigrao.github.domain.profile.GetProfileUseCase
 import de.tigrao.github.domain.profile.model.RepositoryModel
 import de.tigrao.github.sdu.card.model.CardModel
@@ -67,8 +69,8 @@ internal class FetchProfileDataUseCaseDefault @Inject constructor(
             )
             responseList.add(topTitle)
 
-            val topRepositories: List<CardModel> = it.topRepos.map {
-                mapRepo(it, CardSize.MINI)
+            val topRepositories: List<CardModel> = it.topRepos.map { repo ->
+                mapRepo(repo, CardSize.MINI)
             }
             responseList.add(HorizontalCardModel(topRepositories))
 
@@ -77,14 +79,20 @@ internal class FetchProfileDataUseCaseDefault @Inject constructor(
             )
             responseList.add(starredTitle)
 
-            val starRepositories: List<CardModel> = it.starsRepo.map {
-                mapRepo(it, CardSize.MINI)
+            val starRepositories: List<CardModel> = it.starsRepo.map { repo ->
+                mapRepo(repo, CardSize.MINI)
             }
             responseList.add(HorizontalCardModel(starRepositories))
 
             UserProfileUiModel(responseList)
         }, error = {
-            UserProfileUiErrorModel.GenericError
+            val state = StateViewArg(
+                type = StateViewType.Api(),
+                title = "Error to Get data : (",
+                description = "Pull to refresh to try again",
+            )
+
+            UserProfileUiErrorModel.GenericError(state = state)
         })
     }
 

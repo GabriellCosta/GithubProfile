@@ -1,7 +1,5 @@
 package me.tigrao.github.main.presenter
 
-import br.com.hippopotamus.tabarato.designsystem.viewstate.StateViewArg
-import br.com.hippopotamus.tabarato.designsystem.viewstate.StateViewType
 import me.tigrao.github.main.domain.FetchProfileDataUseCase
 import javax.inject.Inject
 
@@ -33,13 +31,7 @@ internal class ProfilePresenter @Inject constructor(
         fetchProfileData(DEFAULT_USER, forced).onSuccess {
             view?.setProfileData(it.cards)
         }.onError {
-            view?.setErrorState(
-                StateViewArg(
-                    type = StateViewType.Api(),
-                    title = "Error to Get data : (",
-                    description = "Pull to refresh to try again",
-                )
-            )
+            view?.setErrorState(it.state)
         }
     }
 }
