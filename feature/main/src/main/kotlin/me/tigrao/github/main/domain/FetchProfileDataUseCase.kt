@@ -1,5 +1,6 @@
 package me.tigrao.github.main.domain
 
+import android.content.res.Resources
 import de.tigrao.github.domain.profile.GetProfileUseCase
 import de.tigrao.github.domain.profile.model.RepositoryModel
 import de.tigrao.github.sdu.card.model.CardModel
@@ -11,6 +12,7 @@ import de.tigrao.github.sdu.card.model.support.HorizontalCardModel
 import de.tigrao.github.sdu.card.model.title.ClickActionTitleModel
 import de.tigrao.github.sdu.card.model.title.TitleCardModel
 import deb.tigrao.github.infra.api.ResultDomain
+import me.tigrao.github.main.R
 import me.tigrao.github.main.domain.model.UserProfileUiErrorModel
 import me.tigrao.github.main.domain.model.UserProfileUiModel
 import javax.inject.Inject
@@ -24,6 +26,7 @@ internal interface FetchProfileDataUseCase {
 
 internal class FetchProfileDataUseCaseDefault @Inject constructor(
     private val getProfileDataUseCase: GetProfileUseCase,
+    private val resources: Resources,
 ) : FetchProfileDataUseCase {
     override suspend fun invoke(
         userName: String,
@@ -38,14 +41,20 @@ internal class FetchProfileDataUseCaseDefault @Inject constructor(
                 title = it.name,
                 subtitle = it.nickName,
                 contact = it.description,
-                bottomText = "${it.followers} followers ${it.following} following"
+                bottomText = resources.getString(
+                    R.string.cards_followers_following,
+                    it.followers,
+                    it.following
+                )
             )
             responseList.add(profileCard)
 
+            val action = ClickActionTitleModel(
+                text = resources.getString(R.string.cards_view_all_action),
+            )
+
             val pinnedTitle: CardModel = TitleCardModel(
-                title = "Pinned", action = ClickActionTitleModel(
-                    text = "View all",
-                )
+                title = resources.getString(R.string.cards_title_pinned), action = action
             )
             responseList.add(pinnedTitle)
 
@@ -54,9 +63,7 @@ internal class FetchProfileDataUseCaseDefault @Inject constructor(
             }
 
             val topTitle: CardModel = TitleCardModel(
-                title = "Top repositories", action = ClickActionTitleModel(
-                    text = "View all",
-                )
+                title = resources.getString(R.string.cards_title_top), action = action
             )
             responseList.add(topTitle)
 
@@ -66,9 +73,7 @@ internal class FetchProfileDataUseCaseDefault @Inject constructor(
             responseList.add(HorizontalCardModel(topRepositories))
 
             val starredTitle: CardModel = TitleCardModel(
-                title = "Starred repositories", action = ClickActionTitleModel(
-                    text = "View all",
-                )
+                title = resources.getString(R.string.cards_title_star), action = action
             )
             responseList.add(starredTitle)
 

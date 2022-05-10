@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="profile_toolbar_title">Profile</string>
+
+    <string name="cards_view_all_action">View all</string>
+    <string name="cards_followers_following">%1$d followers    %2$d following</string>
+    <string name="cards_title_pinned">Pinned</string>
+    <string name="cards_title_top">Top repositories</string>
+    <string name="cards_title_star">Starred repositories</string>
+
 </resources>
