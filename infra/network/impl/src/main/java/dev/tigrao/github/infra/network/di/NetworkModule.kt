@@ -1,10 +1,6 @@
 package dev.tigrao.github.infra.network.di
 
 import android.app.Application
-import android.content.Context
-import com.apollographql.apollo3.ApolloClient
-import com.apollographql.apollo3.cache.normalized.apolloStore
-import com.apollographql.apollo3.cache.normalized.clearNormalizedCache
 import com.apollographql.apollo3.cache.normalized.sql.SqlNormalizedCacheFactory
 import dagger.Module
 import dagger.Provides
@@ -40,5 +36,4 @@ object NetworkModule {
     @Provides
     fun provideNormalizedCache(context: Application) =
         SqlNormalizedCacheFactory(context, CACHE_NAME)
-
 }

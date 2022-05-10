@@ -2,7 +2,8 @@ package de.tigrao.github.domain.profile.mapper
 
 import de.tigrao.github.domain.profile.model.LanguageModel
 import dev.tigrao.github.fragment.LanguageFragment
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNull
 import org.junit.Test
 
 class LanguageDataToModelMapperTest {

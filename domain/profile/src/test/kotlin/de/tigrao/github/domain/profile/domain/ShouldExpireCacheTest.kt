@@ -4,7 +4,8 @@ import de.tigrao.github.domain.profile.data.ExpireCacheDatasource
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.mockkStatic
-import org.junit.Assert.*
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
 import org.junit.Test
 import java.util.Calendar
 

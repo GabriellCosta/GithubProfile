@@ -3,7 +3,7 @@ package de.tigrao.github.domain.profile.mapper
 import de.tigrao.github.domain.profile.model.UserProfileModel
 import dev.tigrao.github.UserProfileQuery
 import io.mockk.mockk
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class ProfileSuccessMapperTest {
