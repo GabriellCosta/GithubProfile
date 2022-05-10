@@ -14,10 +14,10 @@ class ShouldExpireCacheTest {
     private val subject = ShouldExpireCache(expireCacheDatasource)
 
     @Test
-    fun invoke_savedOneHourAgo_returnTrue() {
+    fun invoke_savedOneDayAgo_returnTrue() {
         prepare(
             savedTime = 1652076000000,
-            current = 1652079600000,
+            current = 1652164200000,
         )
 
         val result = subject()

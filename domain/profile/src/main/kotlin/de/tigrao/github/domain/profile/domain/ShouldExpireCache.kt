@@ -4,7 +4,7 @@ import de.tigrao.github.domain.profile.data.ExpireCacheDatasource
 import java.util.Calendar
 import javax.inject.Inject
 
-private const val HOUR = 60 * 1000 * 60
+private const val HOUR = 60 * 1000 * 60 * 24
 
 internal class ShouldExpireCache @Inject constructor(
     private val expireCacheDatasource: ExpireCacheDatasource,
