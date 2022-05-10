@@ -26,12 +26,12 @@ jobs:
 
       - name: Restore gradle.properties
         env:
-          ACCESS_TOKEN: ${{ secrets.AUTH_SECRET_APOLLO }}
+          github_access_token: ${{ secrets.AUTH_SECRET_APOLLO }}
         shell: bash
         run: |
             mkdir -p ~/.gradle/
             echo "GRADLE_USER_HOME=${HOME}/.gradle" >> $GITHUB_ENV
-            echo "${ACCESS_TOKEN}" > ~/.gradle/gradle.properties
+            echo "${github_access_token}" > ~/.gradle/gradle.properties
 
       - name: Prepare cache
         uses: actions/cache@v2
