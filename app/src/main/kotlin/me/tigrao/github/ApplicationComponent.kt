@@ -1,6 +1,7 @@
 package me.tigrao.github
 
 import android.app.Application
+import android.content.res.Resources
 import dagger.BindsInstance
 import dagger.Component
 import dagger.Module
@@ -22,6 +23,9 @@ internal object AppModule {
     @Singleton
     @Provides
     fun provideNetworkBuilder() = NetworkBuilder(BuildConfig.API_URL, BuildConfig.ACCESS_TOKEN)
+
+    @Provides
+    fun provideResources(application: Application): Resources = application.resources
 }
 
 @Singleton

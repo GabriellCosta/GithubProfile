@@ -88,8 +88,8 @@ internal class FetchProfileDataUseCaseDefault @Inject constructor(
         }, error = {
             val state = StateViewArg(
                 type = StateViewType.Api(),
-                title = "Error to Get data : (",
-                description = "Pull to refresh to try again",
+                title = resources.getString(R.string.profile_generic_error_title),
+                description = resources.getString(R.string.profile_generic_error_description),
             )
 
             UserProfileUiErrorModel.GenericError(state = state)
