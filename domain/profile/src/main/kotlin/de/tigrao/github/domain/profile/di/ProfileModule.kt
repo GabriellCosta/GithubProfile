@@ -5,6 +5,7 @@ import dagger.Module
 @Module(
     includes = [
         ProfileDomainModule::class,
+        ProfileDataModule::class,
     ]
 )
 interface ProfileModule
