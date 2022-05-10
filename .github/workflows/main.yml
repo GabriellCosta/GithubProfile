@@ -65,7 +65,7 @@ jobs:
         run: ./tools/linters/detekt/detekt.sh
 
       - name: Run Test
-        run: ./gradlew testDebugUnitTest
+        run: ./gradlew test
 
       - name: Post Danger
         if: always()

@@ -8,8 +8,8 @@ android {
         applicationId AndroidConfig.applicationId
         minSdkVersion AndroidConfig.minSdk
         targetSdkVersion AndroidConfig.targetSdk
-        versionCode 1
-        versionName "1.0"
+        versionCode Integer.parseInt(VERSION_CODE)
+        versionName VERSION_NAME
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "API_URL", "\"https://api.github.com/graphql\""
         buildConfigField "String", "ACCESS_TOKEN", "\"${github_access_token}\""
