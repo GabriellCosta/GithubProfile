@@ -1,5 +1,7 @@
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
+includeBuild("build-plugins")
+
 include(":app")
 include(":styleguide")
 include(":commons-test")
