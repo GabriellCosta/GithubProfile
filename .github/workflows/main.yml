@@ -70,30 +70,3 @@ jobs:
         run: bundle exec danger --danger_id=Post-CI --remove-previous-comments --verbose --fail-on-errors=true --dangerfile=.danger/Post-Ci-Dangerfile
         env:
           DANGER_GITHUB_API_TOKEN: ${{ secrets.DANGER_GITHUB_API_TOKEN }}
-
-      - name: Build app
-        run: ./gradlew app:assembleRelease
-
-      - name: Upload Artifacts
-        uses: actions/upload-artifact@v2.2.4
-        with:
-          name: release-aab
-          path: |
-            app/build/outputs/bundle/release/app-release.aab
-            app/build/outputs/mapping/release/mapping.txt
-      - name: Get APP version
-        id: version
-        run: echo "::set-output name=app_version_name::$(cat gradle.properties | grep VERSION_NAME | cut -d '=' -f2)"
-
-      - name: Tag commit
-        uses: tvdias/github-tagger@v0.0.1
-        with:
-          repo-token: "${{ secrets.GITHUB_TOKEN }}"
-          tag: "${{ steps.version.outputs.app_version_name }}"
-
-      - uses: ncipollo/release-action@v1
-        with:
-          tag: "${{ steps.version.outputs.app_version_name }}"
-          name: "${{ steps.version.outputs.app_version_name }}"
-          artifacts: "app/build/outputs/apk/release/app-release.apk,app/build/outputs/mapping/release/*.txt"
-          token: ${{ secrets.GITHUB_TOKEN }}
