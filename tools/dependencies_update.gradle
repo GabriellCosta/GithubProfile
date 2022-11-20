@@ -1,0 +1,29 @@
+versionCatalogUpdate {
+    pin {
+        sortByKey = false
+        versions = ["kotlin", "compose", "coroutines", "facebook", "ksp, kover"]
+    }
+}
+
+dependencyUpdates.resolutionStrategy {
+    componentSelection { rules ->
+        rules.all { ComponentSelection selection ->
+            boolean rejected = ['alpha', 'beta', 'rc', 'cr', 'm', 'atlassian'].any { qualifier ->
+                selection.candidate.version ==~ /(?i).*[.-]${qualifier}[.\d-]*/
+            }
+            if (rejected) {
+                selection.reject('Release candidate')
+            }
+        }
+    }
+}
+
+tasks.create("versionCatalogUpdateMulti") {
+    if (project.hasProperty("tomlFile")) {
+        tasks.named("versionCatalogUpdate").configure {
+            it.catalogFile = file(project.getProperty("tomlFile"))
+        }
+
+        dependsOn("versionCatalogUpdate")
+    }
+}
